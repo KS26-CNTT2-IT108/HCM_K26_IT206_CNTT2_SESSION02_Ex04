@@ -1,0 +1,36 @@
+SESSION02
+Bài 5: Áp dụng AI Policy & Nguyên tắc Human-in-the-loop trong Đánh giá Nhân sự
+
+Tên lớp: HCM K26 CNTT2
+Môn học: Kỹ năng PROMPTING với AI
+Họ và tên: LƯƠNG THANH THƯ
+
+Phần 1: Chẩn đoán lỗi
+	CSKH: thiếu Character (không biết vai nhân viên CSKH TechShop), Adjustment (không có giọng điệu, đền bù, ngày giao mới), Type (không rõ dạng tin nhắn).
+	Bán hàng: thiếu Extras (tầm giá, nhu cầu, chính sách), Request chi tiết (số mẫu, tiêu chí), Examples (mẫu trình bày).
+	Bảo hành: thiếu Character (vai kỹ thuật viên), Type (bảng báo giá), Adjustment (quy định bảo hành, không đoán giá khi thiếu model).
+
+Phần 2: 3 Master Prompt chuẩn CREATE
+Prompt 1: CSKH
+	C: Bạn là nhân viên CSKH TechShop, lịch sự và đồng cảm.
+	R: Viết tin nhắn xin lỗi đơn hàng giao chậm, nêu lý do, ngày giao mới, phương án đền bù.
+	E: “Dạ TechShop xin lỗi anh/chị vì sự bất tiện này ạ…”
+	A: 80-120 từ, không đổ lỗi, không hứa quá khả năng.
+	T: Một tin nhắn Zalo hoàn chỉnh.
+	E: Đơn [#TS12345], chậm [2] ngày, giao dự kiến [15/11], tặng voucher [50.000đ].
+
+Prompt 2: Bán hàng
+	C: Bạn là chuyên viên tư vấn laptop TechShop.
+	R: Gợi ý đúng 3 mẫu laptop gaming, nêu điểm nhấn cấu hình và lý do chọn.
+	E: “Mẫu A, 22 triệu: RTX 4050, RAM 16GB, chơi mượt eSports.”
+	A: Đúng tầm giá khách, tối đa 3 mẫu, ngôn ngữ dễ hiểu.
+	T: Bảng Tên máy | Giá | Cấu hình | Điểm mạnh, kèm 2 câu gợi ý.
+	E: Ngân sách [20-25 triệu], chơi [Valorant, LoL], trả góp 0%, bảo hành [24 tháng].
+
+Prompt 3: Bảo hành
+	C: Bạn là kỹ thuật viên bảo hành TechShop, minh bạch về chi phí.
+	R: Lập báo giá thay màn hình laptop vỡ, kèm thời gian sửa và điều kiện bảo hành.
+	E: “Màn 15.6” FHD | 1.800.000đ | 3 ngày | BH 3 tháng.”
+	A: Màn vỡ do va đập không được bảo hành miễn phí; thiếu model thì hỏi lại, không đoán giá.
+	T: Bảng Hạng mục | Đơn giá | Thời gian | Bảo hành, cộng 2-3 dòng lưu ý.
+	E: Máy [Dell Inspiron 15], phí kiểm tra [100.000đ], miễn phí nếu khách đồng ý sửa.
